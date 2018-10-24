@@ -122,8 +122,12 @@ angular.module('netStatsApp.filters', [])
 			result = hashes / Math.pow(1000, 4);
 			unit = 'T';
 		}
-
-		return result.toFixed(2) + ' ' + unit + 'H';
+		
+		if(result == 0) {
+			return 'PoA';
+		} else {
+			return result.toFixed(2) + ' ' + unit + 'H';
+		}
 	};
 })
 .filter('nodeVersion', function($sce) {
